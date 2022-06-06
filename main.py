@@ -52,6 +52,7 @@ class VideoProcessor:
             cv2.rectangle(frame, (0, 0),
                                  (int(w*0.18), int(h-h*0.12)), (255,255,255),-1)
 
+            w_i = int(h/len(labels))
 
             for i in range(len(labels)):
     #            cv2.rectangle(frame, (90, 10+ i*int(50)), (90, 60+ i*int(50)), color,-1)
@@ -125,10 +126,11 @@ class VideoProcessor:
 st.subheader('This is my Page')
 st.title('LIS Alphabet')
 st.write("Italian Sign Language or LIS (Lingua dei Segni Italiana) is the visual language used by deaf people in Italy. Deep analysis of it began in the 1980s, along the lines of William Stokoe's research on American Sign Language in the 1960s. Until the beginning of the 21st century, most studies of Italian Sign Language dealt with its phonology and vocabulary. According to the European Union for the Deaf, the majority of the 60,000–90,000 Deaf people in Italy use LIS [Wikipedia].")
+st.write("---")
 webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
     media_stream_constraints={
         "video": {
-            "width": 1280,
+            "width": 1080,
             "frameRate": 30
         }
     },)
