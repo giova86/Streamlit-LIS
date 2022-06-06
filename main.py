@@ -11,7 +11,7 @@ import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
 
-lotties_coding = "https://assets7.lottiefiles.com/packages/lf20_twhevzbe.json"
+lotties_coding = "https://assets7.lottiefiles.com/packages/lf20_S6vWEd.json"
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -19,7 +19,7 @@ def load_lottieurl(url):
         return None
     return r.json()
 
-st.set_page_config(layout='wide')
+#st.set_page_config(layout='wide')
 
 
 def local_CSS(file_name):
@@ -123,8 +123,8 @@ class VideoProcessor:
             return av.VideoFrame.from_ndarray(frame, format='bgr24')
 
 
-st.subheader('This is my Page')
-st.title('LIS Alphabet')
+st.subheader('Metti alla prova il tuo linguaggio dei segni')
+st.title('Alfabeto LIS')
 st.write("Italian Sign Language or LIS (Lingua dei Segni Italiana) is the visual language used by deaf people in Italy. Deep analysis of it began in the 1980s, along the lines of William Stokoe's research on American Sign Language in the 1960s. Until the beginning of the 21st century, most studies of Italian Sign Language dealt with its phonology and vocabulary. According to the European Union for the Deaf, the majority of the 60,000–90,000 Deaf people in Italy use LIS [Wikipedia].")
 st.write("---")
 webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
@@ -139,9 +139,9 @@ webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
 
 st.write("---")
 
-left_column, right_column = st.columns(2)
+st.header("GitHub Project")
+left_column, right_column = st.columns((1,2))
 with right_column:
-        st.header("GitHub Project")
         st.write("##")
         st.write(
         """
@@ -152,4 +152,34 @@ with right_column:
         """
         )
 with left_column:
-    st_lottie(lotties_coding, height=300, key='coding')
+    lottie_json = load_lottieurl(lotties_coding)
+    st_lottie(lottie_json, height=300, key='coding')
+
+st.write("---")
+
+st.header("Bibliography")
+left_column, right_column = st.columns((2,1))
+with left_column:
+        st.write("##")
+        st.write(
+        """
+        On my GitHub channel you can find the repository of the LIS project:
+        - djskalò djasdjk sa
+        - jdkaslò jdsaòlkjd asòkjds aòklds
+        - hda slhkjd sahldsa hdsalkj
+        """
+        )
+with right_column:
+    lottie_json = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_1a8dx7zj.json")
+    st_lottie(lottie_json, height=200, key='coding2')
+#
+#
+# def load_lottieurl(url: str):
+#     r = requests.get(url)
+#     if r.status_code != 200:
+#         return None
+#     return r.json()
+#
+# lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
+# lottie_json = load_lottieurl(lotties_coding)
+# st_lottie(lottie_json)
