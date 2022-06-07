@@ -32,6 +32,8 @@ button[type=submit]:hover {
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-.css-18e3th9 {
+.css-12oz5g7 {
 padding-left: 5rem;
 padding-right: 5rem;
+max-width: 1500px;
+}
