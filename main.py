@@ -10,6 +10,10 @@ import time
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
+from PIL import Image
+
+image = Image.open('LIS-MANI.png')
+
 
 lotties_coding = "https://assets7.lottiefiles.com/packages/lf20_S6vWEd.json"
 
@@ -123,18 +127,46 @@ class VideoProcessor:
             return av.VideoFrame.from_ndarray(frame, format='bgr24')
 
 
-st.subheader('Metti alla prova il tuo linguaggio dei segni')
-st.title('Alfabeto LIS')
-st.write("Italian Sign Language or LIS (Lingua dei Segni Italiana) is the visual language used by deaf people in Italy. Deep analysis of it began in the 1980s, along the lines of William Stokoe's research on American Sign Language in the 1960s. Until the beginning of the 21st century, most studies of Italian Sign Language dealt with its phonology and vocabulary. According to the European Union for the Deaf, the majority of the 60,000–90,000 Deaf people in Italy use LIS [Wikipedia].")
-st.write("---")
-webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
-    media_stream_constraints={
-        "video": {
-            "width": 1080,
-            "frameRate": 30
-        }
-    },)
+st.write('''
+# Alfabeto LIS
+##### *Metti alla prova il tuo linguaggio dei segni*
+''')
 
+col1, col2, col3 = st.columns((2,5,2))
+
+with col1:
+    st.write(' ')
+
+with col2:
+    st.image(image)
+
+with col3:
+    st.write(' ')
+
+
+
+st.write("La LIS non è una forma abbreviata di italiano, una mimica, un qualche codice morse o braille, un semplice alfabeto manuale o un supporto all’espressione della lingua parlata, ma una lingua con proprie regole grammaticali, sintattiche, morfologiche e lessicali. Si è evoluta naturalmente, come tutte le lingue, ma con una struttura molto diversa, che utilizza sia componenti manuali (es. la configurazione, la posizione, il movimento delle mani) che non-manuali, quali l’espressione facciale, la postura, ecc. Ha meccanismi di dinamica evolutiva e di variazione nello spazio (i “dialetti”), e rappresenta un importante strumento di trasmissione culturale. È una lingua che viaggia sul canale visivo-gestuale, integro nelle persone sorde, e ciò consente loro pari opportunità di accesso alla comunicazione.")
+st.write("---")
+
+st.header("Test")
+
+
+col1, col2, col3 = st.columns((1,5,1))
+
+with col1:
+    st.write(' ')
+
+with col2:
+    webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
+        media_stream_constraints={
+            "video": {
+                "width": 1080,
+                "frameRate": 30
+            }
+        },)
+
+with col3:
+    st.write(' ')
 
 
 st.write("---")
