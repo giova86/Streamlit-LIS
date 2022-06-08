@@ -13,6 +13,7 @@ from streamlit_lottie import st_lottie
 from PIL import Image
 
 image = Image.open('LIS-MANI.png')
+image_alfabeto = Image.open('alfabeto.jpg')
 
 
 lotties_coding = "https://assets7.lottiefiles.com/packages/lf20_S6vWEd.json"
@@ -53,16 +54,16 @@ class VideoProcessor:
 
             color = (0,0,0)
             #cv2.rectangle(frame, (0+int(0.03*h),int(h-0.14*h)), (0+int(0.75*h), int(h-0.015*h)), color,-1)
-            cv2.rectangle(frame, (0, 0),
-                                 (int(w*0.18), int(h-h*0.12)), (255,255,255),-1)
+            # cv2.rectangle(frame, (0, 0),
+            #                      (int(w*0.18), int(h-h*0.12)), (255,255,255),-1)
 
-            w_i = int(h/len(labels))
-
-            for i in range(len(labels)):
-    #            cv2.rectangle(frame, (90, 10+ i*int(50)), (90, 60+ i*int(50)), color,-1)
-                cv2.putText(frame, labels[i], (50, (i+1)*int(h/(len(labels)+4))), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2, cv2.LINE_AA)
-                cv2.rectangle(frame, (90, (i)*int(h/(len(labels)+4))+30),
-                                     (90, (i+1)*int(h/(len(labels)+4)) ), color,-1)
+    #         w_i = int(h/len(labels))
+    #
+    #         for i in range(len(labels)):
+    # #            cv2.rectangle(frame, (90, 10+ i*int(50)), (90, 60+ i*int(50)), color,-1)
+    #             cv2.putText(frame, labels[i], (50, (i+1)*int(h/(len(labels)+4))), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2, cv2.LINE_AA)
+    #             cv2.rectangle(frame, (90, (i)*int(h/(len(labels)+4))+30),
+    #                                  (90, (i+1)*int(h/(len(labels)+4)) ), color,-1)
 
             # perform prediction with relative probability
             if results.right_hand_landmarks:
@@ -75,11 +76,11 @@ class VideoProcessor:
                 prediction = model.predict(np.array([points_detection(results)]))[0]
                 pred_prob = np.max(model.predict_proba(np.array([points_detection(results)])))
 
-                for i in range(len(labels)):
-    #                cv2.rectangle(frame, (70, 10+ i*int(50)), (70+int(model.predict_proba(np.array([points_detection(results)]))[0][i]*100)*3, 60+ i*int(50)), color,-1)
-                    cv2.putText(frame, labels[i], (50, (i+1)*int(h/(len(labels)+4))), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2, cv2.LINE_AA)
-                    cv2.rectangle(frame, (90, (i)*int(h/(len(labels)+4))+30),
-                                         (90+int(model.predict_proba(np.array([points_detection(results)]))[0][i]*60)*2, (i+1)*int(h/(len(labels)+4)) ), color,-1)
+    #             for i in range(len(labels)):
+    # #                cv2.rectangle(frame, (70, 10+ i*int(50)), (70+int(model.predict_proba(np.array([points_detection(results)]))[0][i]*100)*3, 60+ i*int(50)), color,-1)
+    #                 cv2.putText(frame, labels[i], (50, (i+1)*int(h/(len(labels)+4))), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2, cv2.LINE_AA)
+    #                 cv2.rectangle(frame, (90, (i)*int(h/(len(labels)+4))+30),
+    #                                      (90+int(model.predict_proba(np.array([points_detection(results)]))[0][i]*60)*2, (i+1)*int(h/(len(labels)+4)) ), color,-1)
 
                 # uncomment for NN
                 # for i in range(len(labels)):
@@ -114,10 +115,11 @@ class VideoProcessor:
                                 cv2.LINE_AA)
             else:
                 cv2.putText(frame, 'Detecting Hand...',
-                            (w-int(0.5*h),int(0.05*h)),
+                            (0+int(0.05*h),h-int(0.05*h)),
+                            #(w-int(0.5*h),int(0.05*h)),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             2,
-                            (0,0,0),
+                            (255,255,255),
                             2,
                             cv2.LINE_AA)
 
@@ -149,12 +151,14 @@ st.write("La LIS non è una forma abbreviata di italiano, una mimica, un qualche
 st.write("---")
 
 st.header("Test")
+st.write("Mettiti alla prova con la nostra intelligenza artificiale. La nostra Rete Neurale è ingrado di riconoscere la posizione della tua mano destra ed indicare con qualche probabilità la lettera eseguita vie riconosciuta.")
 
 
-col1, col2, col3 = st.columns((1,5,1))
+col1, col2 = st.columns((3,5))
 
 with col1:
-    st.write(' ')
+    st.image(image_alfabeto)
+
 
 with col2:
     webrtc_streamer(key='key', video_processor_factory=VideoProcessor,
@@ -164,9 +168,6 @@ with col2:
                 "frameRate": 30
             }
         },)
-
-with col3:
-    st.write(' ')
 
 
 st.write("---")
