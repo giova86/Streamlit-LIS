@@ -150,9 +150,18 @@ with col3:
 st.write("La LIS non è una forma abbreviata di italiano, una mimica, un qualche codice morse o braille, un semplice alfabeto manuale o un supporto all’espressione della lingua parlata, ma una lingua con proprie regole grammaticali, sintattiche, morfologiche e lessicali. Si è evoluta naturalmente, come tutte le lingue, ma con una struttura molto diversa, che utilizza sia componenti manuali (es. la configurazione, la posizione, il movimento delle mani) che non-manuali, quali l’espressione facciale, la postura, ecc. Ha meccanismi di dinamica evolutiva e di variazione nello spazio (i “dialetti”), e rappresenta un importante strumento di trasmissione culturale. È una lingua che viaggia sul canale visivo-gestuale, integro nelle persone sorde, e ciò consente loro pari opportunità di accesso alla comunicazione.")
 st.write("---")
 
+st.header("Video Tutorial")
+col1, col2, col3 = st.columns((2,5,2))
+with col1:
+    pass
+with col2:
+    st.video('https://www.youtube.com/watch?v=0Yx9IkOxFyI')
+with col3:
+    pass
+
+st.write("---")
 st.header("Test")
 st.write("Mettiti alla prova con la nostra intelligenza artificiale. La nostra Rete Neurale è ingrado di riconoscere la posizione della tua mano destra ed indicare con qualche probabilità la lettera eseguita vie riconosciuta.")
-
 
 col1, col2 = st.columns((3,5))
 
@@ -205,6 +214,9 @@ with left_column:
 with right_column:
     lottie_json = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_1a8dx7zj.json")
     st_lottie(lottie_json, height=200, key='coding2')
+
+
+
 #
 #
 # def load_lottieurl(url: str):
