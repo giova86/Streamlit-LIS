@@ -49,7 +49,7 @@ kiwisolver
 MarkupSafe
 matplotlib
 matplotlib-inline
-mediapipe-silicon
+mediapipe
 mistune
 nbclient
 nbconvert
