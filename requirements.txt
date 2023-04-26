@@ -59,7 +59,6 @@ netifaces
 notebook
 numpy
 opencv-contrib-python
-opencv-python
 opencv-python-headless
 packaging
 pandas
