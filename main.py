@@ -40,11 +40,9 @@ holistic = mp_holistic.Holistic(min_detection_confidence=0.5,
                                 min_tracking_confidence=0.5
                                 )
 
-
-
 # class VideoProcessor:
 
-def recv(frame, ):
+def recv(frame):
     frame = frame.to_ndarray(format="bgr24")
 
     h, w, c = frame.shape
@@ -121,7 +119,7 @@ st.write("---")
 st.header("Video Tutorial")
 st.write('')
 st.write('')
-col1, col2, col3, col4 = st.columns([2,9,6,2], gap='large')
+col1, col2, col3, col4 = st.columns([2,9,6,2], gap='Large')
 with col2:
     st.video('https://www.youtube.com/watch?v=0Yx9IkOxFyI')
 with col3:

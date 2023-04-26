@@ -53,13 +53,12 @@ h5 {
     font-size: 30px
 }
 
-
-/* #MainMenu {
+#MainMenu {
     visibility: hidden;
-} */
+}
 footer {
     visibility: hidden;
 }
-/* header {
+header {
     visibility: hidden;
-} */
+}
