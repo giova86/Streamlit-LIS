@@ -32,11 +32,11 @@ button[type=submit]:hover {
 footer {visibility: hidden;}
 header {visibility: hidden;} */
 
-.css-12oz5g7 {
+/* .css-12oz5g7 {
 padding-left: 5rem;
 padding-right: 5rem;
 max-width: 1500px;
-}
+} */
 
 
 ul {
@@ -54,11 +54,11 @@ h5 {
 }
 
 #MainMenu {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 footer {
     visibility: hidden;
 }
 header {
-    visibility: hidden;
+    /* visibility: hidden; */
 }

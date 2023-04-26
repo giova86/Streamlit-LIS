@@ -12,6 +12,23 @@ import requests
 from streamlit_lottie import st_lottie
 from PIL import Image
 
+custom_css = '''
+<style>
+button[title="View fullscreen"]{
+    visibility: hidden;
+}
+.stAppHeader a {
+    display: none;
+}
+.appview-container .main .block-container{
+    max-width: 900px;
+}
+</style>
+'''
+
+st.markdown(custom_css, unsafe_allow_html=True)
+
+
 image = Image.open('LIS-MANI.png')
 image_alfabeto = Image.open('alfabeto.jpg')
 
@@ -131,7 +148,7 @@ st.header("Test")
 st.write("Mettiti alla prova con la nostra intelligenza artificiale. La nostra Rete Neurale è ingrado di riconoscere la posizione della tua mano destra ed indicare con qualche probabilità la lettera eseguita vie riconosciuta.")
 
 
-col1, col2, col3 = st.columns((1,5,1))
+col1, col2, col3 = st.columns((1,7,1))
 with col2:
     st.write('')
     webrtc_streamer(key='key', video_frame_callback=recv,
