@@ -58,7 +58,7 @@ nest-asyncio
 netifaces
 notebook
 numpy
-opencv-python-headless
+opencv-python
 packaging
 pandas
 pandocfilters
