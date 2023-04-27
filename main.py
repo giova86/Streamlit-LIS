@@ -151,7 +151,7 @@ st.write("Mettiti alla prova con la nostra intelligenza artificiale. La nostra R
 col1, col2, col3 = st.columns((1,7,1))
 with col2:
     st.write('')
-    webrtc_streamer(key='key', video_frame_callback=recv,
+    webrtc_streamer(key='key', #video_frame_callback=recv,
         media_stream_constraints={
             "video": {
                 "width": 1080,
