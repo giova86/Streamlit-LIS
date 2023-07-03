@@ -154,9 +154,6 @@ with col2:
     st.write('')
     webrtc_streamer(
         key='key',
-        rtc_configuration={  # Add this config
-            "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-        },
         video_frame_callback=recv,
         media_stream_constraints={
             "video": {
