@@ -71,6 +71,7 @@ def recv(frame):
     if results.right_hand_landmarks:
         if rh_area:
             draw_limit_rh(frame, results)
+            draw_landmarks_custom(frame, results)
 
         prediction = model.predict(np.array([points_detection(results)]))[0]
         pred_prob = np.max(model.predict_proba(np.array([points_detection(results)])))
@@ -151,7 +152,9 @@ st.write("Mettiti alla prova con la nostra intelligenza artificiale. La nostra R
 col1, col2, col3 = st.columns((1,7,1))
 with col2:
     st.write('')
-    webrtc_streamer(key='key', video_frame_callback=recv,
+    webrtc_streamer(
+        key='key',
+        video_frame_callback=recv,
         media_stream_constraints={
             "video": {
                 "width": 1080,
